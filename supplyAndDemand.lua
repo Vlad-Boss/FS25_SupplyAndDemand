@@ -283,6 +283,10 @@ local function setFillTypeDemandTitles()
       populateMissingDataPoints()
     end
 
+    if string.find(fillType.title, "%s%p([-%d+]+)%p+") ~= nil then
+      fillType.title = string.gsub(fillType.title, "%s%p([-%d+]+)%p+", "", 2)
+    end
+
     fillType.defaultTitle = fillType.title
     fillType.title = string.format(
       '%s (%d%%)',
